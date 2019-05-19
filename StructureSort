@@ -1,1 +1,87 @@
 //algo for SS
+
+STEP - 1 : Read or Assign the data of structure objects. (Lets say Name, Marks in Physics, Chemistry and Maths).
+STEP - 2 : total marks = phy marks + chem marks + maths marks. 
+STEP - 3 : Now evaluate the rank of students by any simple sort based on the total marks.
+
+            Loop from i=0 to N-2 with incrementation of i by 1 after 1 iteration.
+                Inside the loop have one more loop from j=i+1 till j=N-1
+                    If s[j].total<s[i].total or ( s[j].total==s[i].total && s[j].maths>s[i].maths ) or ( s[j].total==s[i].total && s[j].maths==s[i].maths && s[j].physics>s[i].physics)
+                    then swap s[i] and s[j] by temp object of structure i.e.
+                        temp=s[i]
+                        s[i]=s[j]
+                        s[j]=temp
+                go to Inner Loop
+             go to Outer Loop
+STEP - 4 : Display the structure table with Ranks by using for loop running from i=0 to N-1.
+STEP - 5 : Done.
+
+// c++ code
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+struct Stud
+{
+    string name;
+    int maths;
+    int physics;
+    int chemistry;
+    int total;
+};
+
+int main ()
+{
+    Stud s[4];
+
+    s[0].name="Joe Gatto";
+    s[1].name="James Murr";
+    s[2].name="Brian Quinn";
+    s[3].name="Sal Vulcano";
+	
+	
+    s[0].maths=80;
+    s[1].maths=95;
+    s[2].maths=70;
+    s[3].maths=50;
+
+    s[0].physics=78;
+    s[1].physics=98;
+    s[2].physics=88;
+    s[3].physics=68;
+
+    s[0].chemistry=91;
+    s[1].chemistry=97;
+    s[2].chemistry=89;
+    s[3].chemistry=85;
+
+	s[0].total=s[0].physics+s[0].chemistry+s[0].maths;
+	s[1].total=s[1].physics+s[1].chemistry+s[1].maths;
+	s[2].total=s[2].physics+s[2].chemistry+s[2].maths;
+	s[3].total=s[3].physics+s[3].chemistry+s[3].maths;
+
+    int i,j;
+    Stud temp;
+
+    for(i=0;i<3;i++)
+    {
+        for(j=i+1;j<4;j++)
+        {
+            if(s[j].total<s[i].total)
+            {
+                temp=s[j];
+                s[j]=s[i];
+                s[i]=temp;
+            }
+        }
+    }
+
+cout<<"Rank\tName\tPhysics\tChemistry\tMaths\tTotal"<<"\n";
+
+    for(i=0;i<4;i++)
+    {
+        cout<<i+1<<"\t"<<s[i].name<<"\t\t"<<s[i].physics<<"\t\t"<<s[i].chemistry<<"\t\t"<<s[i].maths<<"\t\t"<<s[i].total<<"\n";
+    }
+    return 0;
+}

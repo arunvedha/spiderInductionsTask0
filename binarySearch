@@ -11,8 +11,8 @@ int bisearch(int A[],int len,int obj)
   mid=(beg+end)/2;
   if(A[mid]==obj) return mid;    //location of obj found
   else if(A[mid]>obj)            //first half of array has obj
-   end=mid-1;                    //second half of array has obj
-  else
+   end=mid-1;                    
+  else                           //second half of array has obj
    beg=mid+1;
  }
  return -1;             //if code reaches till here,obj doesnt exist, so -1 is returned

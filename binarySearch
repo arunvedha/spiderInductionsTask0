@@ -1,1 +1,19 @@
 //algo for binary search
+
+int bisearch(int A[],int len,int obj)
+{
+ //assuming array is sorted in ascending order
+ int beg,end,mid;           //beg marks beginning,end marks ending and mid for middle
+ beg=0;                     //initialising values
+ end=len-1;
+ while(end>=beg)
+ {
+  mid=(beg+end)/2;
+  if(A[mid]==obj) return mid;    //location of obj found
+  else if(A[mid]>obj)            //first half of array has obj
+   end=mid-1;                    //second half of array has obj
+  else
+   beg=mid+1;
+ }
+ return -1;             //if code reaches till here,obj doesnt exist, so -1 is returned
+}

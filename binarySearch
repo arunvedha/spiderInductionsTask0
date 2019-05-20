@@ -1,1 +1,56 @@
+#include <iostream>
+
+using namespace std;
+
 //algo for binary search
+
+int bisearch(int A[],int len,int obj)
+{
+ //assuming array is sorted in ascending order
+ int beg,end,mid;           //beg marks beginning,end marks ending and mid for middle
+ beg=0;                     //initialising values
+ end=len-1;
+ while(end>=beg)
+ {
+  mid=(beg+end)/2;
+  if(A[mid]==obj) return mid;    //location of obj found
+  else if(A[mid]>obj)            //first half of array has obj
+   end=mid-1;                    
+  else                           //second half of array has obj
+   beg=mid+1;
+ }
+ return -1;             //if code reaches till here,obj doesnt exist, so -1 is returned
+}
+void insertionsort(int a[],int n)
+{
+    int i,j,temp;
+    for(i=1;i<=n-1;i++)
+    {
+        temp=a[i];
+        j=i-1;
+ 
+        while((temp<a[j])&&(j>=0))
+        {
+            a[j+1]=a[j];    //moves element forward
+            j=j-1;
+        }
+ 
+        a[j+1]=temp;    //insert element in proper place
+    }
+}
+
+int main()
+{
+    int n,s,a[30];
+    cout<<"Enter no. of elements - ";
+    cin>>n;
+    cout<<"Enter elements in ascending order (else will be sorted automatically) - ";
+    for(int i=0;i<n;i++) cin>>a[i];
+    cout<<"Enter element to search - ";
+    cin>>s;
+    insertionsort(a,n);
+    s=bisearch(a,n,s);
+    if(s==-1)cout<<"Not Found";
+    else cout<<"Found at position "<<s+1;
+    return 0;
+}

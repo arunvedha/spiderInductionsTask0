@@ -2,21 +2,24 @@
 using namespace std;
  
 #define INF 9999999
-#define V 5
- 
-int G[V][V] = { {0, 2, 0, 6, 0}, 
-                {2, 0, 3, 8, 5}, 
-                {0, 3, 0, 0, 7}, 
-                {6, 8, 0, 0, 9}, 
-                {0, 5, 7, 9, 0}
-              };
+int V;
+
+
+int G[50][50];
 
 
  
 int main () {
  
   int no_edge;      
-  int selected[V];
+  int selected[50];
+  
+  cin>>V;
+  for(int i = 0; i < V; i++){
+  	for(int j = 0;j < V;j++){
+  		cin>>G[i][j];
+	  }
+  }
   
  for(int i = 0;i<V;i++){
    selected[i] = false;
